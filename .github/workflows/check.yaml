@@ -14,9 +14,11 @@ jobs:
   check:
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    # env:
-    #   GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     #   R_KEEP_PKG_SOURCE: yes
+    permissions:
+      contents: write
 
     steps:
 
@@ -32,19 +34,15 @@ jobs:
       - name: Install packages
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          packages: gsheet, assertr, DT
-
-      - name: Import data
-        run: Rscript -e 'df <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1oEp3LAcXLt5frr3dverde1YjwUg1fihVtEXKwaLJ_ns/edit?usp=sharing")'
+          packages: gsheet, assertr, rgibf, DT
 
       - name: Check data
-        run: Rscript -e 'source("R/check_data.R"); check_data(df)'
+        run: Rscript -e 'source("process_data.R")'
 
-      - name: Check taxonomy
-        run: Rscript -e 'source("R/check_taxonomy.R"); check_taxonomy(df)'
-
-      - name: Integrate new data in database
-        run: Rscript -e 'write.csv(df, "database.csv", append = TRUE)'
+      - name: Upload changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Upload checked dataset
 
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
