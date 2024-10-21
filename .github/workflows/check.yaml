@@ -38,7 +38,7 @@ jobs:
         run: Rscript -e 'df <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1oEp3LAcXLt5frr3dverde1YjwUg1fihVtEXKwaLJ_ns/edit?usp=sharing")'
 
       - name: Import functions
-        run: Rscript -e 'source("check_data.R"); source("check_taxonomy.R")'
+        run: Rscript -e 'source("R/check_data.R"); source("R/check_taxonomy.R")'
 
       - name: Check data
         run: Rscript -e 'check_data(df)'
