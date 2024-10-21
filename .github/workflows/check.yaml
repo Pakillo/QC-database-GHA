@@ -35,6 +35,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: gsheet, assertr, rgbif, DT
+          cache: always
 
       - name: Check data
         run: Rscript -e 'source("process_data.R")'
