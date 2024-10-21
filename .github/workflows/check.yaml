@@ -35,7 +35,7 @@ jobs:
           packages: gsheet, assertr, DT
 
       - name: Import data
-        run: Rscript -e 'df <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1oEp3LAcXLt5frr3dverde1YjwUg1fihVtEXKwaLJ_ns/edit?usp=sharing")
+        run: Rscript -e 'df <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1oEp3LAcXLt5frr3dverde1YjwUg1fihVtEXKwaLJ_ns/edit?usp=sharing")'
 
       - name: Check data
         run: Rscript -e 'source("R/check_data.R"); check_data(df)'
