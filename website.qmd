@@ -9,5 +9,5 @@ db <- read.csv("database.csv")
 DT::datatable(db)
 ```
 
-
+Download the database [here](https://github.com/Pakillo/QC-database-GHA/blob/main/database.csv)
 

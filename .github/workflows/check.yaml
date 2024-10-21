@@ -35,7 +35,6 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: gsheet, assertr, rgbif, DT
-          cache: always
 
       - name: Check data
         run: Rscript -e 'source("process_data.R")'
@@ -45,12 +44,13 @@ jobs:
         with:
           commit_message: Upload checked dataset
 
-      - name: Publish to GitHub Pages (and render)
+      - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: website.qmd
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 

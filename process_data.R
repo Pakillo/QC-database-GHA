@@ -21,6 +21,6 @@ rgbif::name_backbone_checklist(df$species) |>
 
 
 ## Append new data to database
-write.csv(df, "database.csv", append = TRUE)
+write.table(df, "database.csv", append = TRUE, sep = ",", col.names = FALSE)
 
 
