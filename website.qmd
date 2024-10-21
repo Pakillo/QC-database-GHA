@@ -1,0 +1,13 @@
+---
+title: "A reproducible, dynamic, quality-controlled database of fruit traits"
+format: html
+---
+
+```{r}
+#| echo: false
+db <- read.csv("database.csv")
+DT::datatable(db)
+```
+
+
+
