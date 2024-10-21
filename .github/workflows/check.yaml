@@ -34,7 +34,7 @@ jobs:
       - name: Install packages
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          packages: gsheet, assertr, rgibf, DT
+          packages: gsheet, assertr, rgbif, DT
 
       - name: Check data
         run: Rscript -e 'source("process_data.R")'
