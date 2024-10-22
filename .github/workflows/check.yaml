@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    #   R_KEEP_PKG_SOURCE: yes
     permissions:
       contents: write
 
@@ -49,8 +48,7 @@ jobs:
         with:
           target: gh-pages
           path: website.qmd
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
 
 
